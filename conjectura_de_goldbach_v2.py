@@ -5,10 +5,12 @@ Autor: Alexandre Cardoso Garcia Leite.
 Criação: 13/07/2024
 Última Atualização: 13/07/2024
 
-conjectura_de_goldback_v1.py
+conjectura_de_goldback_v2.py
 
 Descrição do problema:
     Qualquer número par é a soma de dois números primos.
+    Nesta solução daremos a lista de todos os pares de 
+    números primos que sua soma resulta no número par dado.
 """
 
 import numpy as np
@@ -68,11 +70,22 @@ while (numero_par < numero):
         except IndexError:
             primo_2 = 0
         if (primo_1 + primo_2 == numero_par):
-            dict_conjectura_goldbach[ numero_par ] = [ (primo_1, primo_2) ]
-            break
-        else:
+            if numero_par not in dict_conjectura_goldbach:
+                dict_conjectura_goldbach[ numero_par ] = [ (primo_1, primo_2) ]
+            else:
+                # verifica quando as somas começarão a ser apenas a permutação dos dois termos
+                if dict_conjectura_goldbach[ numero_par ][-1] == (primo_2, primo_1):
+                    break
+                dict_conjectura_goldbach[ numero_par ].append( (primo_1, primo_2) )
             ind_primo_1 = ind_primo_1 + 1
             primo_1 = primos[ ind_primo_1 ]
+
+        else:
+            try:
+                ind_primo_1 = ind_primo_1 + 1
+                primo_1 = primos[ ind_primo_1 ]
+            except IndexError:
+                break
             
 print(dict_conjectura_goldbach[ numero ])
             
