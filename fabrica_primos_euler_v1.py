@@ -72,7 +72,7 @@ while (num_primos_encontrados < len(lista_numeros_naturais)):
 l_num_primos = lista_numeros_naturais
 
 """
-Com a lista de números primos em mãos, faremos encontraremos os pares de números primos que resultam na sequência de todos os números pares.
+Com a lista de números primos em mãos, verificaremos até quando a fórmula d = n^2 - n + 41 funciona.
 """
 
 
